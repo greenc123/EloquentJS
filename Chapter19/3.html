@@ -1,0 +1,87 @@
+<!--
+Circles
+Define a tool called circle that draws a filled circle when you drag. 
+The center of the circle lies at the point where the drag or touch gesture starts, 
+and its radius is determined by the distance dragged.
+
+You can take some inspiration from the rectangle tool. 
+Like that tool, you’ll want to keep drawing on the starting picture, 
+rather than the current picture, when the pointer moves.
+
+To figure out which pixels to color, you can use the Pythagorean theorem. 
+
+First figure out the distance between the current pointer position and 
+the start position by taking the square root (Math.sqrt) of the sum of 
+the square (Math.pow(x, 2)) of the difference in x-coordinates and the 
+square of the difference in y-coordinates. 
+
+Then loop over a square of pixels around the start position, 
+whose sides are at least twice the radius, and color those that are within the 
+circle’s radius, again using the Pythagorean formula to figure out their distance from the center.
+
+Make sure you don’t try to color pixels that are outside of the picture’s boundaries.
+-->
+
+<script src="elt.js"></script>
+<script src="draw.js"></script>
+<script src="fill.js"></script>
+
+<script src="pick.js"></script>
+<script src="Picture.js"></script>
+<script src="rectangle.js"></script>
+
+<script src="ToolSelect.js"></script>
+<script src="ColorSelect.js"></script>
+<script src="UndoButton.js"></script>
+
+<script src="SaveButton.js"></script>
+<script src="LoadButton.js"></script>
+<script src="FinishLoad.js"></script>
+
+<script src="startState.js"></script>
+<script src="pixelEditor.js"></script>
+<script src="drawPicture.js"></script>
+
+<script src="PictureCanvas.js"></script>
+<script src="pictureFromImage.js"></script>
+<script src="historyUpdateState.js"></script>
+
+<div></div>
+<script>
+	function circle(pos, state, dispatch) {
+		function drawCircle(to) {
+			let radius = Math.sqrt(
+				Math.pow(to.x - pos.x, 2) + Math.pow(to.y - pos.y, 2)
+			);
+
+			let radiusC = Math.ceil(radius);
+			let drawn = [];
+
+			for (let dy = -radiusC; dy <= radiusC; dy++) {
+				for (let dx = -radiusC; dx <= radiusC; dx++) {
+					let dist = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+					if (dist > radius) continue;
+					let y = pos.y + dy;
+					let x = pos.x + dx;
+
+					if (
+						y < 0 ||
+						y >= state.picture.height ||
+						x < 0 ||
+						x >= state.picture.width
+					)
+						continue;
+					drawn.push({ x, y, color: state.color });
+				}
+			}
+			dispatch({ picture: state.picture.draw(drawn) });
+		}
+		drawCircle(pos);
+		return drawCircle;
+	}
+
+	let dom = startPixelEditor({
+		tools: Object.assign({}, baseTools, { circle }),
+	});
+	document.querySelector("div").appendChild(dom);
+</script>
