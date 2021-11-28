@@ -110,3 +110,128 @@ Strings also have to be modeled as a series of bits to be able to exist inside t
 
 
 JavaScript uses 16 bits per string element, which can describe 2^16 different characters.
+
+
+
+
+
+
+### UNARY OPERATORS 
+
+```
+console.log(typeof 4.5)
+// -> number
+console.log(typeof "x")
+// -> string
+```
+
+
+Operators that use two values are called binary operators, while those that take on are called unary operators.
+
+The minus operator can be used both as a binary operator and as a unary operator.
+```
+console.log(- (10 - 2))
+// -> 8
+```
+
+
+
+
+
+### BOOLEAN VALUES
+
+When programmining it is useful to have a value that distinguishes between only two possibilities, like "yes" and "no" or "on" and "off". For this purpose JavaScript has a boolean type, true and false.
+
+#### Comparison
+
+```
+console.log(3 > 2)
+// -> true
+
+console.log(3 < 2)
+// -> false
+```
+
+The > and < signs check whether the values are "greater than" or "less than"
+
+Strings can also be compared in this way.
+
+```
+console.log("Aardvark" < "Zoroaster")
+// -> true
+```
+
+When comparing strings, JavaScript goes over the characters from left to right, comparing Unicode codes one by one.
+
+Other operations include: 
+>= (greater than or equal to)
+<= (less than or equal to)
+== (equal to)
+!= (not equal to)
+
+
+```
+console.log("Itchy" != "Scratchy")
+// -> true
+console.log("Apple" == "Orange")
+// -> false
+```
+
+
+There is only one value in JavaScript that is not equal to itself, and that is NaN "not a number"
+
+```
+console.log(NaN == NaN)
+// -> false
+```
+
+#### Logical Operators
+
+There are also some operations that can be applied to boolean values.
+JavaScript supports three logical operators: and, or and not.
+These can be used to "reason" about booleans.
+
+The && operator represents logical *and*
+The result is true only if both the values given to it are true.
+
+```
+console.log(true && false)
+// -> false
+console.log(true && true)
+// -> true
+```
+
+The || operator denotes logical *or* and produces true if either values are true
+
+```
+console.log(false || true)
+// -> true
+console.log(false || false)
+// -> false
+```
+
+! or the (NOT) is a unary operator that flips the value given to it:
+!true produces false
+!false produces true
+
+Ternary operations use three values
+
+```
+console.log(true ? 1 : 2)
+// -> 1
+console.log(false ? 1 : 2)
+// -> 2
+```
+
+This is sometimes called the conditional operator
+When the value before the question mark is true the value to the left of : is chosen
+When the value before the question mark is false the value to the right of : is chosen 
+
+
+#### Empty Values
+
+
+*null* and *undefined* are used to denote the absence of a meaningful value.
+They are values that carry no information.
+
+
