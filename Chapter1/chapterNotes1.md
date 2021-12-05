@@ -230,8 +230,54 @@ When the value before the question mark is false the value to the right of : is 
 
 #### Empty Values
 
-
 *null* and *undefined* are used to denote the absence of a meaningful value.
 They are values that carry no information.
+
+AUTOMATIC TYPE CONVERSATION
+
+```
+console.log(8 * null)
+// -> 0
+console.log("5" - 1)
+// -> 4
+console.log("5" + 1)
+// -> 51
+console.log("five" * 2)
+// -> NaN
+console.log(false == 0)
+// -> true
+```
+
+When an operator is applied to the "wrong" type of value,
+JavaScript will quietly convert that value to the type
+it needs, using a set of rules that often aren't 
+what you want or expect.
+
+The `null` in the first expression becomes 0, and "5"
+in the second expression becomes 5 (from string to number)
+
+```
+console.log(null == undefined)
+// -> true
+console.log(null == 0)
+// -> false
+```
+
+SHORT - CIRCUITING OF LOGICAL OPERATORS
+
+The logical operators && and || handle values of different
+types in a peculiar way. They will convert the value on
+their left side to Boolean type in order to decide what
+
+to do, but depending on the operator and the result
+of that conversion, they will return either the
+*original* left-hand value or the right hand value
+
+```
+console.log(null || "user")
+// -> user
+console.log("Agnes" || "user")
+// -> Agnes
+```
 
 
