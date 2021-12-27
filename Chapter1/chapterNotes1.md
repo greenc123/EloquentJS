@@ -7,7 +7,9 @@ __"Below the surface of the machine, the program moves. Without effort, it expan
 **Master Yuan-Ma, The Book of Programming**
 
 Computers only hold data. Data that you can read, write, create and delete. Bits are typilcally ones and zeros which represent that data. Any piece of discrete information can be tranformed into 1's and 0's. The following bits hold 13:
+
 0  0  0  0  1  1  0  1
+
 128 64 32 16  8  4  2  1
 
 Binary number **00001101** and it adds up to **13**.
@@ -29,13 +31,13 @@ There is a sea of bits, a typical modern computer has more than 30 billion bits 
 
 Numbers are typically represented as numeric values in JavaScript, not binary. 
 
-13
+`13`
 
 Thirteen will cause the bit patter for the #13 to come into existence inside the computer's memory.
 
 JavaScript uses a fixed number of 64 bits.
 
-You can represent up to 2^64.
+You can represent up to __2^64__.
 
 Computer memory used to be groups of 8 or 16 bits to represent number. Numbers would overflow or end up with a number that did not fit into the given number of bits. Nowadays we are able to use 64 bit chunks and only need to overflow when dealing with astronomical numbers.
 
@@ -263,7 +265,7 @@ console.log(null == 0)
 // -> false
 ```
 
-SHORT - CIRCUITING OF LOGICAL OPERATORS
+#### SHORT - CIRCUITING OF LOGICAL OPERATORS
 
 The logical operators && and || handle values of different
 types in a peculiar way. They will convert the value on
