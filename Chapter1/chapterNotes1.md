@@ -87,7 +87,7 @@ There are three special values in JS that don't behave like normal numbers but a
 
 Strings are used to represent text and are enclosing in quotes.
 
-```
+```javascript
 `Down on the sea` "Lie on the beach" 'Float on the ocean'
 ```
 
@@ -120,7 +120,7 @@ JavaScript uses 16 bits per string element, which can describe 2^16 different ch
 
 ### UNARY OPERATORS 
 
-```
+```javascript
 console.log(typeof 4.5)
 // -> number
 console.log(typeof "x")
@@ -131,7 +131,7 @@ console.log(typeof "x")
 Operators that use two values are called binary operators, while those that take on are called unary operators.
 
 The minus operator can be used both as a binary operator and as a unary operator.
-```
+```javascript
 console.log(- (10 - 2))
 // -> 8
 ```
@@ -146,7 +146,7 @@ When programmining it is useful to have a value that distinguishes between only 
 
 #### Comparison
 
-```
+```javascript
 console.log(3 > 2)
 // -> true
 
@@ -158,7 +158,7 @@ The > and < signs check whether the values are "greater than" or "less than"
 
 Strings can also be compared in this way.
 
-```
+```javascript
 console.log("Aardvark" < "Zoroaster")
 // -> true
 ```
@@ -172,7 +172,7 @@ Other operations include:
 != (not equal to)
 
 
-```
+```javascript
 console.log("Itchy" != "Scratchy")
 // -> true
 console.log("Apple" == "Orange")
@@ -182,7 +182,7 @@ console.log("Apple" == "Orange")
 
 There is only one value in JavaScript that is not equal to itself, and that is NaN "not a number"
 
-```
+```javascript
 console.log(NaN == NaN)
 // -> false
 ```
@@ -196,7 +196,7 @@ These can be used to "reason" about booleans.
 The && operator represents logical *and*
 The result is true only if both the values given to it are true.
 
-```
+```javascript
 console.log(true && false)
 // -> false
 console.log(true && true)
@@ -205,7 +205,7 @@ console.log(true && true)
 
 The || operator denotes logical *or* and produces true if either values are true
 
-```
+```javascript
 console.log(false || true)
 // -> true
 console.log(false || false)
@@ -218,7 +218,7 @@ console.log(false || false)
 
 Ternary operations use three values
 
-```
+```javascript
 console.log(true ? 1 : 2)
 // -> 1
 console.log(false ? 1 : 2)
@@ -237,7 +237,7 @@ They are values that carry no information.
 
 AUTOMATIC TYPE CONVERSATION
 
-```
+```javascript
 console.log(8 * null)
 // -> 0
 console.log("5" - 1)
@@ -258,7 +258,7 @@ what you want or expect.
 The `null` in the first expression becomes 0, and "5"
 in the second expression becomes 5 (from string to number)
 
-```
+```javascript
 console.log(null == undefined)
 // -> true
 console.log(null == 0)
@@ -275,7 +275,7 @@ to do, but depending on the operator and the result
 of that conversion, they will return either the
 *original* left-hand value or the right hand value
 
-```
+```javascript
 console.log(null || "user")
 // -> user
 console.log("Agnes" || "user")
