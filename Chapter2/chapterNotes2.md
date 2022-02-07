@@ -31,7 +31,7 @@ The previous statement creates a abinding called `caught` and uses it to grab ho
 After binding has been defined, its name can be used as an expression.
 the value of such an expression is the value the binding currently holds.
 
-```
+```javascript
 let ten = 10
 console.log(ten * ten)
 // -> 100
@@ -40,7 +40,7 @@ console.log(ten * ten)
 When a binding points at a value, that does not mean it is tied to that value forever.
 The `=` operator can be used at any time on existing bindings to disconnect them from their current value and have a new one.
 
- ```
+ ```javascript
  let mood = "light"
  console.log(mood)
  // -> light
@@ -56,7 +56,7 @@ A program can access only the values that it still has reference to.
 
 When you need to remember something, you grow a tentacle to hold on to it or you reattach one of your existing tentacles to it.
 
-```
+```javascript
 let luigisDebt = 140
 luigisDebt = luigisDebt - 35
 console.log(luigisDebt)
@@ -140,7 +140,7 @@ The *next chatper* explains how to wrtie functions
 When your program contains more than one statement,
 the statemetns are executed as if they are a story, from top to bottom.
 
-``` 
+```javascript
 let theNumber = Number(prompt("Pick a number"));
 console.log("Your number is the square root of " + theNumber + theNumber);
 ```
@@ -166,7 +166,7 @@ Conditional execution is creatd with the `if` keyword in JavaScript.
 When we want some code to be executed if, and only if, a certain 
 condition holds.
 
-```
+```javascript
 let theNumber = Number(prompt("Pick a number"))
 if (!Number.isNaN(theNumber)) {
   console.log("Your number is the square root of " + theNumber * theNumber)
@@ -194,14 +194,14 @@ only if the argument it is given is `NaN`.
  
  Most JavaScript programmers use them in every wrapped statement like this.
  
- ```
+ ```javascript
  if (1 + 1 === 2) console.log("This is true")
  ```
  
  You can also use the `else` keyword, together with `if`, to create
  two seperate, alternative executions paths.
  
-```
+```javascript
 let theNumber = Number(prompt("Pick a number"));
 
 if (!Number.isNaN(theNumber)) {
@@ -212,7 +212,7 @@ if (!Number.isNaN(theNumber)) {
 If you have more than two paths to choose from, you can "chain" multiple
 `if/else` pairs together. Here's an example:
 
-```
+```javascript
 let num = Number(prompt("Pick a number"))
 
 if (num < 10) {
@@ -239,7 +239,7 @@ If it isn't, it takes the `else` branch, which itself contains a second `if`.
 Consider a program that outputs all even numbers from 0 to 12.
 We can write:
 
-```
+```javascript
 console.log(0) 
 console.log(2)
 console.log(4)
@@ -261,7 +261,7 @@ Looping control flow allows us to go back to some point in the progam where we
 were before and repeat it with our current program state. If we combine this
 with a binding that counts, we can do something like this:
 
-```
+```javascript
 let number = 0
 while (number <= 12) {
   console.log(number)
@@ -277,7 +277,7 @@ If the word while is followed by an expression in parentheses and then a stateme
 
 The *number* binding demonstrates the way a binding can track the progress of a programs. Every time the loop repeats, number gets a value that is 2 more than its previous value. At the beginning of overy repetition, it is compared with the number 12 to decide whether the program's work is finished.
 
-```
+```javascript
 let result = 1
 let counter = 0
 
@@ -295,7 +295,7 @@ console.log(result)
 Many loops follow the `while` loop pattern. First a "counter" is created to keep track of the loop.
 Because this pattern is so common, JavaScript and similar languages procide a shorter more comprehensive form, the `for` loop.
 
-```
+```javascript
 for (let number = 0; number <= 12; number = number + 2) {
   console.log(number)
 }
@@ -316,7 +316,7 @@ The final part updates the state of the loop after every iteration.
 Having the looping condition produce *false* is not the only way a loop can finish. 
 There is a special statement called `break` that has the effect of immediately jumping out the enclosing loop.
 
-```
+```javascript
 for (let current = 20; ; current = current + 1) {
   if (current % 7 === 0) {
     console.log(current)
@@ -350,13 +350,13 @@ jumps out of the body and continues with the loop's next iteration.
 When doing a loop, the program needs to "update" a binding to hold a value
 based on that binding's previous value
 
-```
+```javascript
 counter = counter + 1
 ```
 
 Javascript shortcut:
 
-```
+```javascript
 counter += 1
 ```
 
@@ -365,7 +365,7 @@ Similart shortcuts work for other operators, such as `result *= 2` to double
 
 This allows us to shorten our counting example:
 
-```
+```javascript
 for (let number = 0; number <= 12; number += 2) {
   console.log(number)
 }
@@ -379,7 +379,7 @@ counter-- for decrement
 
 It is not uncommon for code to look like this:
 
-```
+```javascript
 if (x == "value1") action1()
 else if (x == "value2") action2()
 else if (x == "value3") action3()
@@ -389,7 +389,7 @@ else defaultAction()
 There is also a construct `switch` that is intended to express such a 
 "dispatch" in a more direct way.
 
-```
+```javascript
 switch (prompt("What is the weather like?")) {
   case "rainy":
     console.log("Remember to bring an umbrella.");
@@ -404,4 +404,90 @@ switch (prompt("What is the weather like?")) {
     break;
 }
 ```
+
+
+### CAPITALIZATION
+
+Binding names may not contain spaces, yet it is often helpful
+to use multiple words to clearly describe what the bindings represents.
+These are pretty much your choices for writing a binding name with several
+words in it:
+
+> fuzzylittleturtle
+
+> fuzzy_little_turtle
+
+> FuzzyLittleTurtle
+
+> fuzzyLittleTurtle
+
+
+The first style can be hard to read
+
+The second style looks better but is hard to read
+
+The third and fourth style is what most javascript programmers use
+
+
+### Comments
+
+Comments are ignored by the computer but are written for humans
+
+To write a single line comment you can use two slashs `//` then add a comment after
+
+``` javascript
+let accountBalance = calculateBalance(account)
+// It's a green hollow where a river sings
+accountBalance.adjust()
+// Madly catching white tatters in the grass
+let report = new Report()
+// Where the sun on the proud mountain rings:
+addToReport(accountBalance, report)
+// It's a little valley, foaming like light in a glass
+```
+
+A section of text `/* */` will be ignored in its entirety. This is useful for adding blocks of information about a file or a chunk of a program
+
+``` javascript
+/*
+  I first found this number scrawled on the back of an old
+  notebook. Since then, it has often dropped by, showing up in
+  phone numbers and the serial numbers of products that I've
+  bought. It obviously likes me, so I've decided to keep it.
+*/
+
+const myNumber = 112213
+```
+
+
+### EXERCISES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
