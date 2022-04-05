@@ -138,3 +138,120 @@ if (safeMode) {
   launchMissles = function() {/* do nothing */}
 }
 ```
+
+### DECLARATION NOTATION
+
+
+There is a slightly shorter way to create a function binding. When the `function` keyword is used at the start of a statement, it works differently.
+
+```javascript
+function square(x) {
+  return x * x;
+}
+```
+
+This is a function `delcaration`. The statement defines the binding square and points it at the given function. It is slightly easier to write and doesn't require a semicolon after the function.
+
+```javascript
+console.log("The future says:", future())
+
+function future() {
+  return "You'll never have flying cars"
+}
+```
+
+This code works, even though the function is defined below the code that uses it.
+Function declarations are not part of the regular top-to-bottom flow of control.
+They are conceptually moved to the top of their scope and can be used by all the code in that scope.
+This is useful when it offers freedom to order code in a way that seems meaningful, without worrying about having to defind all functions before they are used.
+
+### ARROW FUNCTIONS
+
+There's a third notation for functions, which looks very different from the others.
+It uses an arrow (=>) made up of an equal sign and a greater-than character.
+
+```javascript
+const power = (base, exponenet) => {
+  let result = 1
+  
+  for (let count = 0; count < exponent; count++)  {
+    result *= base
+  }
+  
+  return result
+}
+```
+
+The arrow comes `after` the list of parameters and is followed by the function's body. It expresses something like "this input (the parameters) produces this result (the body)".
+
+When there is only one parameter name, you can omit the parentheses around the parameter list. If the body is a single expression, rather than a blcok in braces, that expression will be returned from the function. So, these two definitions of square do the same thing:
+
+```javascript
+const sq1 = x => return x * x
+const sq2 = (x) => {return x * x}
+```
+
+When an arrow function has no parameters at all, its parameters list is just an empty set of parentheses.
+
+```javascript
+const horn = () => {
+  console.log("Toot")
+}
+```
+
+Arrow functions help to write small function expressions in a less verbose way.
+
+
+### THE CALL STACK
+
+
+The way control flows through functions is somewhat involved.
+
+```javascript
+function greet(who) {
+  console.log("Hello " + who)
+}
+
+greet("Harry")
+console.log("Bye")
+```
+
+A run through this program goes roughly like this:
+- the call to `greet` causes control to jump to the start of that function (line 2)
+- The function calls `console.log`, which takes control, does its job, and then returns control to line 2.
+- There it reaches the end of the `greet` function, so it returns to the places that called it, which is line 4
+- The line after that calls `console.log` again
+- After that returns, the program reaches its end
+
+We could show the flow of control of schematically like this:
+
+> not in function
+> > in greet
+> > > in console.log
+> > 
+> > in greet
+> 
+> not in function
+> > in console.log
+> 
+> not in function
+
+Because a function has to jump back to the place that called it when it returns, the computer must remember the context from which the call happened. In one case, console.log has to return to the `greet` function when it is done. In the other case, it returns to the end of the program.
+
+The place where the computer stores this context is the call stack. Every time a function is called, the current context is stored on top of this stack. When a function returns, it removes the top context from the stack and uses that context to continue execution.
+
+Store this stack requries space in the computer's memory. When the stack grows too big, the computer will fail with a message like "out of stack space" or "too much recursion". The following code illustrates this by asking the computer a really hard question that causes an infinite back-and-forth between two functions. Rather, it `would` be infinit, if the computer had an infinite stack. As it is, we will run out of space, or "blow the stack".
+
+```javascript
+function chicken() {
+  return egg()
+}
+
+function egg() {
+  return chicken()
+}
+
+console.log(chicken() + " came first.")
+// -> ??
+```
+
